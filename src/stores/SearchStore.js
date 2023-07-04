@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { useMovieStore } from "./MovieStore";
 import { ref } from "vue";
 const url =
-  "https:api.themoviedb.org/3/search/movie?api_key=02708c4929ad93aa5e68f8ee7bfa4445&query=";
+  "https://api.themoviedb.org/3/search/movie?api_key=02708c4929ad93aa5e68f8ee7bfa4445&query=";
 export const useSearchStore = defineStore("searchStore", () => {
   const loader = ref(false);
   const movies = ref([]);
@@ -15,16 +15,13 @@ export const useSearchStore = defineStore("searchStore", () => {
     loader.value = false;
   };
 
-  const addToUserMovies = async (object) => {
+  const addToUserMovies = async(object) => {
     const movieStore = useMovieStore();
-    movieStore.movies.push({ ...object, isWatched: false });
-    movieStore.activeTab = 1;
-  };
+      movieStore.movies.push({ ...object, isWatched: false });
+      movieStore.activeTab = 1;
+  }
 
-  return {
-    loader,
-    movies,
-    getMovies,
-    addToUserMovies,
-  };
+  return{
+    loader, movies, getMovies, addToUserMovies
+  }
 });
