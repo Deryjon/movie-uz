@@ -4,14 +4,16 @@
       <img src="../assets/logo.svg" class="header-logo" alt="" />
       <h2>My Favourite Movies</h2>
     </header>
-    <div class="tabs">
+    <div class="tabs ">
       <button
+      class="w-[70px] md:w-[100px] h-[30px] md:h-[50px]"
         :class="['btn', { btn_green: movieStore.activeTab === 1 }]"
         @click="setTab(1)"
       >
         Favourite
       </button>
       <button
+      class="w-[70px] md:w-[100px] h-[30px] md:h-[50px]"
         :class="['btn', { btn_green: movieStore.activeTab === 2 }]"
         @click="setTab(2)"
         >
@@ -20,14 +22,14 @@
     </div>
     <div class="movies" v-if="movieStore.activeTab === 1">
       <div class="">
-        <h3>Watched Movies (count: {{ movieStore.watchedMovies.length }})</h3>
+        <h3 class="ml-[80px] mb-2 ">Watched Movies (count: {{ movieStore.watchedMovies.length }})</h3>
         <Movie
           v-for="movie in movieStore.watchedMovies"
           :key="movie.id"
           :movie="movie"
         />
       </div>
-      <h3>All Movies (count: {{ movieStore.totalCountMovies }})</h3>
+      <h3 class="ml-[80px] mb-2 ">All Movies (count: {{ movieStore.totalCountMovies }})</h3>
       <Movie
         v-for="movie in movieStore.movies"
         :key="movie.id"
@@ -64,8 +66,6 @@ const movieStore = useMovieStore();
 }
 .btn {
   border: none;
-  width: 100px;
-  height: 40px;
   font-size: 14px;
   margin: 0 10px;
   border-radius: 10px;
